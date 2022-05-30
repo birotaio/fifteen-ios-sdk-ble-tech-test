@@ -1,0 +1,6 @@
+framework module FakeSdkBle {
+  umbrella header "FakeSdkBle-umbrella.h"
+
+  export *
+  module * { export * }
+}

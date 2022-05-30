@@ -1,0 +1,22 @@
+{
+  "name": "FakeSdkBle",
+  "version": "0.1.0",
+  "summary": "A short description of FakeSdkBle.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/cobeque/FakeSdkBle",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "cobeque": "corentin.becquey@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/cobeque/FakeSdkBle.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "FakeSdkBle/Classes/**/*"
+}
