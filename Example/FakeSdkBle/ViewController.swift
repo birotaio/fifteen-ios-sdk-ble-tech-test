@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Connect(_ sender: Any) {
-        FakeSdkBle.sharedInstance.connect(serialNumber: 103480, onSuccess: {
+        FakeSdkBle.sharedInstance.connect(serialNumber: "103480", onSuccess: {
             print("Success connect")
         }, onFailure: { (err) in
             print("Error connect \(err)")
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Start(_ sender: Any) {
-        FakeSdkBle.sharedInstance.startTrip(onSuccess: {
+        FakeSdkBle.sharedInstance.unlock(onSuccess: {
             print("Success start")
         }, onFailure: { (err) in
             print("Error start \(err)")
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func End(_ sender: Any) {
-        FakeSdkBle.sharedInstance.endTrip(onSuccess: {
+        FakeSdkBle.sharedInstance.lock(onSuccess: {
             print("Success end")
         }, onFailure: { (err) in
             print("Error end \(err)")
