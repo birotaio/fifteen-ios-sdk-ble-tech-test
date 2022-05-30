@@ -1,22 +1,22 @@
 public class BikeData {
-    public var serialNumber: Int?
+    public var serialNumber: String?
     public var batteryLevel: Int?
     public var isConnected: Bool
-    public var inTrip: Bool
+    public var isLock: Bool
 
-    init(serialNumber: Int?) {
+    init(serialNumber: String?) {
         self.serialNumber = serialNumber
         self.batteryLevel = nil
         self.isConnected = false
-        self.inTrip = false
+        self.isLock = true
     }
 }
 
 public enum ErrorBLE: String {
     case alreadyConnected = "already Connect"
     case notConnected = "not Connected"
-    case alreadyInTrip = "already in trip"
-    case notInTrip = "not in trip"
+    case alreadyUnlock = "already unlock"
+    case alreadyLock = "already lock"
     case bleError = "ble error"
 }
 
@@ -25,7 +25,7 @@ public class FakeSdkBle {
     public var bikeData = BikeData(serialNumber: nil)
 
 
-    public func connect(serialNumber: Int, onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void)
+    public func connect(serialNumber: String, onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void)
     {
         let randomInt = Int.random(in: 0..<10)
 
@@ -45,15 +45,15 @@ public class FakeSdkBle {
         }
     }
 
-    public func startTrip(onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void) {
+    public func unlock(onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void) {
         let randomInt = Int.random(in: 0..<10)
 
         if self.bikeData.isConnected == false {
             onFailure(.notConnected)
             return
         }
-        if self.bikeData.inTrip {
-            onFailure(.alreadyInTrip)
+        if self.bikeData.isLock == false {
+            onFailure(.alreadyUnlock)
             return
         }
         
@@ -62,20 +62,20 @@ public class FakeSdkBle {
             onFailure(.bleError)
         }
         else {
-            self.bikeData.inTrip = true
+            self.bikeData.isLock = false
             onSuccess()
         }
     }
 
-    public func endTrip(onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void) {
+    public func lock(onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void) {
         let randomInt = Int.random(in: 0..<10)
 
         if self.bikeData.isConnected == false {
             onFailure(.notConnected)
             return
         }
-        if self.bikeData.inTrip == false {
-            onFailure(.notInTrip)
+        if self.bikeData.isLock == true {
+            onFailure(.alreadyLock)
             return
         }
         
@@ -84,7 +84,7 @@ public class FakeSdkBle {
             onFailure(.bleError)
         }
         else {
-            self.bikeData.inTrip = false
+            self.bikeData.isLock = true
             onSuccess()
         }
     }
