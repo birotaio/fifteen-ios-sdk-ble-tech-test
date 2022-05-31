@@ -10,24 +10,32 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 You got 4 calls:
 
-  Connect    ===> Start a fake connection with a bike
+1:
+
+    Connect   ===> Start a fake connection with a bike
                   
                   Error already connect
                   Error Ble
-                  
-  Unlock     ===> Try to fake unlock a bike
+2:
+
+
+    Unlock    ===> Try to fake unlock a bike
                   
                   Error not connected
                   Error already unlock
                   Error Ble
-                  
-  Lock       ===> Try to fake lock a bike
+3:
+
+
+    Lock    ===> Try to fake lock a bike
                   
                   Error not connected
                   Error already lock
                   Error Ble
-                  
-  Disconnect ===> End connection
+4:
+
+
+    Disconnect    ===> End connection
                   
                   Can't fail
 
