@@ -33,17 +33,17 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tnz-aF-i53">
                                         <rect key="frame" x="0.0" y="167" width="375" height="166.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Start"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Unlock"/>
                                         <connections>
-                                            <action selector="Start:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="n6d-A7-Q0P"/>
+                                            <action selector="Unlock:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ihr-BN-EI7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTf-Jp-LJd">
                                         <rect key="frame" x="0.0" y="333.5" width="375" height="167"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="End"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Lock"/>
                                         <connections>
-                                            <action selector="End:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="tS6-Va-1EE"/>
+                                            <action selector="Lock:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hsU-td-LSX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKt-hl-eoC">

@@ -31,19 +31,19 @@ class ViewController: UIViewController {
         })
     }
     
-    @IBAction func Start(_ sender: Any) {
+    @IBAction func Unlock(_ sender: Any) {
         FakeSdkBle.sharedInstance.unlock(onSuccess: {
-            print("Success start")
+            print("Success unlock")
         }, onFailure: { (err) in
-            print("Error start \(err)")
+            print("Error unlock \(err)")
         })
     }
     
-    @IBAction func End(_ sender: Any) {
+    @IBAction func Lock(_ sender: Any) {
         FakeSdkBle.sharedInstance.lock(onSuccess: {
-            print("Success end")
+            print("Success lock")
         }, onFailure: { (err) in
-            print("Error end \(err)")
+            print("Error lock \(err)")
         })
     }
     
