@@ -12,12 +12,12 @@ public class BikeData {
     }
 }
 
-public enum ErrorBLE: String {
-    case alreadyConnected = "already Connect"
-    case notConnected = "not Connected"
-    case alreadyUnlock = "already unlock"
-    case alreadyLock = "already lock"
-    case bleError = "ble error"
+public enum ErrorSdkBle: String {
+    case AlreadyConnected = "already Connect"
+    case NotConnected = "not Connected"
+    case AlreadyUnlocked = "already unlock"
+    case AlreadyLocked = "already lock"
+    case BluetoothError = "ble error"
 }
 
 public class FakeSdkBle {
@@ -25,17 +25,17 @@ public class FakeSdkBle {
     public var bikeData = BikeData(serialNumber: nil)
 
 
-    public func connect(serialNumber: String, onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void)
+    public func connect(serialNumber: String, onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorSdkBle) -> Void)
     {
         let randomInt = Int.random(in: 0..<10)
 
         if self.bikeData.isConnected {
-            onFailure(.alreadyConnected)
+            onFailure(.AlreadyConnected)
             return
         }
         sleep(1)
         if randomInt >= 8 {
-            onFailure(.bleError)
+            onFailure(.BluetoothError)
         }
         else {
             self.bikeData.serialNumber = serialNumber
@@ -45,21 +45,21 @@ public class FakeSdkBle {
         }
     }
 
-    public func unlock(onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void) {
+    public func unlock(onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorSdkBle) -> Void) {
         let randomInt = Int.random(in: 0..<10)
 
         if self.bikeData.isConnected == false {
-            onFailure(.notConnected)
+            onFailure(.NotConnected)
             return
         }
         if self.bikeData.isLock == false {
-            onFailure(.alreadyUnlock)
+            onFailure(.AlreadyUnlocked)
             return
         }
         
         sleep(1)
         if randomInt == 9 {
-            onFailure(.bleError)
+            onFailure(.BluetoothError)
         }
         else {
             self.bikeData.isLock = false
@@ -67,21 +67,21 @@ public class FakeSdkBle {
         }
     }
 
-    public func lock(onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorBLE) -> Void) {
+    public func lock(onSuccess: @escaping() -> Void, onFailure: @escaping(ErrorSdkBle) -> Void) {
         let randomInt = Int.random(in: 0..<10)
 
         if self.bikeData.isConnected == false {
-            onFailure(.notConnected)
+            onFailure(.NotConnected)
             return
         }
         if self.bikeData.isLock == true {
-            onFailure(.alreadyLock)
+            onFailure(.AlreadyLocked)
             return
         }
         
         sleep(1)
         if randomInt == 9 {
-            onFailure(.bleError)
+            onFailure(.BluetoothError)
         }
         else {
             self.bikeData.isLock = true
