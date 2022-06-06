@@ -91,6 +91,7 @@ public class FakeSdkBle {
 
     public func disconnect() {
         sleep(1)
+        self.bikeData = BikeData(serialNumber: nil)
         self.bikeData.isConnected = false
         print("Disconnect")
     }
